@@ -31,12 +31,13 @@ export default function Huarongdao({ blocks }) {
           }
         }
       },
-    })
+    }),
+    [blocks],
   )
 
   return (
     <div ref={drop} className={`w-${WIDTH * CUBE_SIZE} h-${HEIGHT * CUBE_SIZE} bg-gray-200 rounded shadow relative`}>
-      {blocks.map((item, i) => (
+      {blocks && blocks.map((item, i) => (
         <Block key={i} item={item} />
       ))}
     </div>

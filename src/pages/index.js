@@ -5,7 +5,7 @@ import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
 
 export default function Home() {
-  const [blocks] = useState(layoutHendaolima())
+  const [blocks, setBlocks] = useState(layoutHendaolima())
 
   return (
     <main className="p-24">
@@ -13,7 +13,7 @@ export default function Home() {
       <div className="flex gap-8 justify-center items-center">
 
         <div>
-          <button className="border rounded-lg bg-red-400 text-white p-4 hover:bg-red-600 active:bg-red-400">开始游戏</button>
+          <button className="border rounded-lg bg-red-400 text-white p-4 hover:bg-red-600 active:bg-red-400" onClick={() => setBlocks(layoutHendaolima())}>重新布局</button>
         </div>
 
         <div className="flex flex-col items-center">

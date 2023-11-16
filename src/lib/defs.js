@@ -43,7 +43,7 @@ export function blockBgColor(hero) {
 export function layoutHendaolima() {
   const layout = [
     ['caocao', 2, 2, 1, 0, CAOCAO],
-    ['guanyu', 1, 2, 0, 0, ZHAOYUN],
+    ['zhaoyun', 1, 2, 0, 0, ZHAOYUN],
     ['machao', 1, 2, 3, 0, MACHAO],
     ['huangzhong', 1, 2, 0, 2, HUANGZHONG],
     ['zhangfei', 1, 2, 3, 2, ZHANGFEI],

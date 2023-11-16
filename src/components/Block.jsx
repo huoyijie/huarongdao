@@ -9,7 +9,7 @@ export default function Block({ item }) {
     collect: (monitor) => ({
       isDragging: monitor.isDragging()
     })
-  }))
+  }), [item])
 
   return (
     <div ref={drag} className={`w-${w * CUBE_SIZE} h-${h * CUBE_SIZE} left-${x * CUBE_SIZE} top-${y * CUBE_SIZE} absolute p-0.5 hover:cursor-grab ${isDragging ? 'opacity-50' : ''}`}>
