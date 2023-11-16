@@ -2,7 +2,7 @@ import { CUBE_SIZE, WIDTH, HEIGHT, detectCollision } from "@/lib/defs"
 import Block from "./Block"
 import { useDrop } from "react-dnd"
 
-export default function Huarongdao({ blocks }) {
+export default function Huarongdao({ blocks, move }) {
   const [, drop] = useDrop(
     () => ({
       accept: 'block',
@@ -13,20 +13,24 @@ export default function Huarongdao({ blocks }) {
           if (x > CUBE_SIZE / 2) {
             if (!detectCollision({ ...item, x: item.x + 1 }, blocks)) {
               item.x++
+              move()
             }
           } else if (x < -CUBE_SIZE / 2) {
             if (!detectCollision({ ...item, x: item.x - 1 }, blocks)) {
               item.x--
+              move()
             }
           }
         } else {
           if (y > CUBE_SIZE / 2) {
             if (!detectCollision({ ...item, y: item.y + 1 }, blocks)) {
               item.y++
+              move()
             }
           } else if (y < -CUBE_SIZE / 2) {
             if (!detectCollision({ ...item, y: item.y - 1 }, blocks)) {
               item.y--
+              move()
             }
           }
         }
