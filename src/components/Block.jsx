@@ -1,9 +1,11 @@
 import { CUBE_SIZE, blockBgColor } from "@/lib/defs"
 import { useDrag } from "react-dnd"
 
-export default function Block({ w, h, x, y, hero }) {
+export default function Block({ item }) {
+  const { w, h, x, y, hero } = item
   const [{ isDragging }, drag] = useDrag(() => ({
     type: 'block',
+    item,
     collect: (monitor) => ({
       isDragging: monitor.isDragging()
     })

@@ -40,15 +40,25 @@ export function blockBgColor(hero) {
   return bgColor
 }
 
-export const BLOCK_LAYOUT_HENDAOLIMA = [
-  [2, 2, 1, 0, CAOCAO],
-  [1, 2, 0, 0, ZHAOYUN],
-  [1, 2, 3, 0, MACHAO],
-  [1, 2, 0, 2, HUANGZHONG],
-  [1, 2, 3, 2, ZHANGFEI],
-  [2, 1, 1, 2, GUANYU],
-  [1, 1, 1, 3, BING],
-  [1, 1, 2, 3, BING],
-  [1, 1, 0, 4, BING],
-  [1, 1, 3, 4, BING],
-]
+export function layoutHendaolima() {
+  const layout = [
+    [2, 2, 1, 0, CAOCAO],
+    [1, 2, 0, 0, ZHAOYUN],
+    [1, 2, 3, 0, MACHAO],
+    [1, 2, 0, 2, HUANGZHONG],
+    [1, 2, 3, 2, ZHANGFEI],
+    [2, 1, 1, 2, GUANYU],
+    [1, 1, 1, 3, BING],
+    [1, 1, 2, 3, BING],
+    [1, 1, 0, 4, BING],
+    [1, 1, 3, 4, BING],
+  ]
+
+  return layout.map(([w, h, x, y, hero]) => ({
+    w,
+    h,
+    x,
+    y,
+    hero,
+  }))
+}

@@ -1,16 +1,36 @@
 import { CUBE_SIZE, WIDTH, HEIGHT } from "@/lib/defs"
 import Block from "./Block"
-import { DndProvider } from "react-dnd"
-import { HTML5Backend } from "react-dnd-html5-backend"
+import { useDrop } from "react-dnd"
 
 export default function Huarongdao({ blocks }) {
+  const [, drop] = useDrop(
+    () => ({
+      accept: 'block',
+      drop: (item, monitor) => {
+        const { x, y } = monitor.getDifferenceFromInitialOffset()
+
+        if (Math.abs(x) >= Math.abs(y)) {
+          if (x > CUBE_SIZE / 2) {
+            item.x++
+          } else if (x < -CUBE_SIZE / 2) {
+            item.x--
+          }
+        } else {
+          if (y > CUBE_SIZE / 2) {
+            item.y++
+          } else if (y < -CUBE_SIZE / 2) {
+            item.y--
+          }
+        }
+      },
+    })
+  )
+
   return (
-    <DndProvider backend={HTML5Backend}>
-      <div className={`w-${WIDTH * CUBE_SIZE} h-${HEIGHT * CUBE_SIZE} bg-gray-200 rounded shadow relative`}>
-        {blocks.map(([w, h, x, y, hero], i) => (
-          <Block key={i} w={w} h={h} x={x} y={y} hero={hero} />
-        ))}
-      </div>
-    </DndProvider>
+    <div ref={drop} className={`w-${WIDTH * CUBE_SIZE} h-${HEIGHT * CUBE_SIZE} bg-gray-200 rounded shadow relative`}>
+      {blocks.map((item, i) => (
+        <Block key={i} item={item} />
+      ))}
+    </div>
   )
 }
