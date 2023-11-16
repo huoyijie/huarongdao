@@ -10,24 +10,24 @@ export default function Huarongdao({ blocks, move }) {
         const { x, y } = monitor.getDifferenceFromInitialOffset()
 
         if (Math.abs(x) >= Math.abs(y)) {
-          if (x > CUBE_SIZE / 2) {
+          if (x > 0) {
             if (!detectCollision({ ...item, x: item.x + 1 }, blocks)) {
               item.x++
               move()
             }
-          } else if (x < -CUBE_SIZE / 2) {
+          } else if (x < 0) {
             if (!detectCollision({ ...item, x: item.x - 1 }, blocks)) {
               item.x--
               move()
             }
           }
         } else {
-          if (y > CUBE_SIZE / 2) {
+          if (y > 0) {
             if (!detectCollision({ ...item, y: item.y + 1 }, blocks)) {
               item.y++
               move()
             }
-          } else if (y < -CUBE_SIZE / 2) {
+          } else if (y < 0) {
             if (!detectCollision({ ...item, y: item.y - 1 }, blocks)) {
               item.y--
               move()
