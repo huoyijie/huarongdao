@@ -42,19 +42,20 @@ export function blockBgColor(hero) {
 
 export function layoutHendaolima() {
   const layout = [
-    [2, 2, 1, 0, CAOCAO],
-    [1, 2, 0, 0, ZHAOYUN],
-    [1, 2, 3, 0, MACHAO],
-    [1, 2, 0, 2, HUANGZHONG],
-    [1, 2, 3, 2, ZHANGFEI],
-    [2, 1, 1, 2, GUANYU],
-    [1, 1, 1, 3, BING],
-    [1, 1, 2, 3, BING],
-    [1, 1, 0, 4, BING],
-    [1, 1, 3, 4, BING],
+    ['caocao', 2, 2, 1, 0, CAOCAO],
+    ['guanyu', 1, 2, 0, 0, ZHAOYUN],
+    ['machao', 1, 2, 3, 0, MACHAO],
+    ['huangzhong', 1, 2, 0, 2, HUANGZHONG],
+    ['zhangfei', 1, 2, 3, 2, ZHANGFEI],
+    ['guanyu', 2, 1, 1, 2, GUANYU],
+    ['bing1', 1, 1, 1, 3, BING],
+    ['bing2', 1, 1, 2, 3, BING],
+    ['bing3', 1, 1, 0, 4, BING],
+    ['bing4', 1, 1, 3, 4, BING],
   ]
 
-  return layout.map(([w, h, x, y, hero]) => ({
+  return layout.map(([id, w, h, x, y, hero]) => ({
+    id,
     w,
     h,
     x,
@@ -88,7 +89,7 @@ function collised(srcItem, targetItem) {
 
 export function detectCollision(srcItem, blocks) {
   for (const targetItem of blocks) {
-    if (srcItem.hero != targetItem.hero && collised(srcItem, targetItem)) {
+    if (srcItem.id != targetItem.id && collised(srcItem, targetItem)) {
       return true
     }
   }
