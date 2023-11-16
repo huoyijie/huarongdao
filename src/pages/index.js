@@ -8,17 +8,28 @@ export default function Home() {
   const [blocks] = useState(layoutHendaolima())
 
   return (
-    <main className="flex flex-col gap-8 items-center p-24">
+    <main className="p-24">
 
-      <div className="text-4xl">三国华容道</div>
+      <div className="flex gap-8 justify-center items-center">
 
-      <div className="flex flex-col items-center">
+        <div>
+          <button className="border rounded-lg bg-red-400 text-white p-4 hover:bg-red-600 active:bg-red-400">开始游戏</button>
+        </div>
 
-        <DndProvider backend={HTML5Backend}>
-          <Huarongdao blocks={blocks} />
-        </DndProvider>
+        <div className="flex flex-col items-center">
+          <div className="text-4xl mb-8">三国华容道</div>
 
-        <div className="w-256 text-center text-2xl pt-2 border-x-8 border-gray-200">关口</div>
+          <DndProvider backend={HTML5Backend}>
+            <Huarongdao blocks={blocks} />
+          </DndProvider>
+
+          <div className="w-256 text-center text-2xl pt-2 border-x-8 border-gray-200">关口</div>
+        </div>
+
+        <div className="flex flex-col gap-8">
+          <div>time</div>
+          <div>steps</div>
+        </div>
 
       </div>
 
