@@ -9,3 +9,46 @@ export const ZHAOYUN = '赵云'
 export const MACHAO = '马超'
 export const HUANGZHONG = '黄忠'
 export const BING = '兵'
+
+export function blockBgColor(hero) {
+  let bgColor = 'bg-green-400'
+  switch (hero) {
+    case CAOCAO:
+      bgColor = 'bg-blue-400'
+      break
+
+    case GUANYU:
+      bgColor = 'bg-red-400'
+      break
+
+    case ZHANGFEI:
+      bgColor = 'bg-gray-600'
+      break
+
+    case HUANGZHONG:
+      bgColor = 'bg-yellow-400'
+      break
+
+    case ZHAOYUN:
+      bgColor = 'bg-orange-400'
+      break
+
+    case MACHAO:
+      bgColor = 'bg-sky-400'
+      break
+  }
+  return bgColor
+}
+
+export const BLOCK_LAYOUT_HENDAOLIMA = [
+  [2, 2, 1, 0, CAOCAO],
+  [1, 2, 0, 0, ZHAOYUN],
+  [1, 2, 3, 0, MACHAO],
+  [1, 2, 0, 2, HUANGZHONG],
+  [1, 2, 3, 2, ZHANGFEI],
+  [2, 1, 1, 2, GUANYU],
+  [1, 1, 1, 3, BING],
+  [1, 1, 2, 3, BING],
+  [1, 1, 0, 4, BING],
+  [1, 1, 3, 4, BING],
+]
