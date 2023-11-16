@@ -62,3 +62,35 @@ export function layoutHendaolima() {
     hero,
   }))
 }
+
+function itemCubes({ w, h, x, y }) {
+  const cubes = []
+  for (let i = 0; i < w; i++) {
+    for (let j = 0; j < h; j++) {
+      cubes.push([x + i, y + j])
+    }
+  }
+  return cubes
+}
+
+function collised(srcItem, targetItem) {
+  const srcCubes = itemCubes(srcItem)
+  const targetCubes = itemCubes(targetItem)
+  for (let [sx, sy] of srcCubes) {
+    for (let [tx, ty] of targetCubes) {
+      if (sx == tx && sy == ty) {
+        return true
+      }
+    }
+  }
+  return false
+}
+
+export function detectCollision(srcItem, blocks) {
+  for (const targetItem of blocks) {
+    if (srcItem.hero != targetItem.hero && collised(srcItem, targetItem)) {
+      return true
+    }
+  }
+  return false
+}
