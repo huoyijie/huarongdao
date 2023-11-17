@@ -24,31 +24,22 @@ export default function Home() {
   }, [blocks])
 
   return (
-    <main className="p-24">
+    <main className="flex flex-col items-center p-4">
+      <div className="text-4xl p-2">三国华容道</div>
 
-      <div className="flex gap-8 justify-center items-center">
-
+      <div className="w-full py-4 flex justify-center items-center gap-16 text-xl text-red-600">
+        <div>第 {moves} 步</div>
+        <div>{time.h(timer)}:{time.m(timer)}:{time.s(timer)}</div>
         <div>
-          <button className="border rounded-lg bg-red-400 text-white p-4 hover:bg-red-600 active:bg-red-400" onClick={newGame}>重新布局</button>
+          <button className="border rounded bg-red-400 text-white text-sm p-1 hover:bg-red-600 active:bg-red-400" onClick={newGame}>重新布局</button>
         </div>
-
-        <div className="flex flex-col items-center">
-          <div className="text-4xl mb-8">三国华容道</div>
-
-          <DndProvider backend={HTML5Backend}>
-            <Huarongdao blocks={blocks} move={move} />
-          </DndProvider>
-
-          <div className="w-256 text-center text-2xl pt-2 border-x-8 border-gray-200">关口</div>
-        </div>
-
-        <div className="flex flex-col gap-8 text-xl text-red-600">
-          <div>时间 {time.h(timer)}:{time.m(timer)}:{time.s(timer)}</div>
-          <div>步数 {moves}</div>
-        </div>
-
       </div>
 
+      <DndProvider backend={HTML5Backend}>
+        <Huarongdao blocks={blocks} move={move} />
+      </DndProvider>
+
+      <div className="w-256 text-center text-2xl pt-2 border-x-8 border-gray-200">关口</div>
     </main>
   )
 }
