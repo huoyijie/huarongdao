@@ -13,6 +13,8 @@ export default function Home() {
   const [moves, setMoves] = useState(0)
   const audioRef = useRef()
 
+  const playing = !!blocks
+
   const newGame = () => {
     setBlocks(Defs.layoutHendaolima())
     setTimer(0)
@@ -30,11 +32,11 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    if (blocks) {
+    if (playing) {
       const intervalId = setInterval(() => setTimer(timer => timer + time.SECOND), time.SECOND)
       return () => clearInterval(intervalId)
     }
-  }, [blocks])
+  }, [playing])
 
   return (
     <main className="flex flex-col items-center p-4">
@@ -49,12 +51,12 @@ export default function Home() {
         <div>第 {moves} 步</div>
         <div>{time.h(timer)}:{time.m(timer)}:{time.s(timer)}</div>
         <div>
-          <button className="border rounded bg-red-400 text-white text-sm p-1 hover:bg-red-600 active:bg-red-400" onClick={newGame}>{blocks ? '重玩游戏' : '开始游戏'}</button>
+          <button className="border rounded bg-red-400 text-white text-sm p-1 hover:bg-red-600 active:bg-red-400" onClick={newGame}>{playing ? '重玩游戏' : '开始游戏'}</button>
         </div>
       </div>
 
       <DndProvider backend={TouchBackend} options={{ enableMouseEvents: true }}>
-        <Huarongdao blocks={blocks} move={move} />
+        <Huarongdao blocks={blocks} playing={playing} move={move} />
       </DndProvider>
 
       <div className={`w-${2 * Defs.CUBE_SIZE_SM} md:w-${2 * Defs.CUBE_SIZE} text-center text-2xl pt-2 border-x-8 border-gray-200`}>关口</div>

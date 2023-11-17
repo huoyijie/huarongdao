@@ -2,7 +2,7 @@ import { Defs } from "@/lib/defs"
 import Block from "./Block"
 import { useDrop } from "react-dnd"
 
-export default function Huarongdao({ blocks, move }) {
+export default function Huarongdao({ playing, blocks, move }) {
   const [, drop] = useDrop(
     () => ({
       accept: 'block',
@@ -41,9 +41,15 @@ export default function Huarongdao({ blocks, move }) {
 
   return (
     <div ref={drop} className={`w-${Defs.WIDTH * Defs.CUBE_SIZE_SM} md:w-${Defs.WIDTH * Defs.CUBE_SIZE} h-${Defs.HEIGHT * Defs.CUBE_SIZE_SM} md:h-${Defs.HEIGHT * Defs.CUBE_SIZE} bg-gray-100 rounded shadow relative shadow-inner-lg shadow-gray-600`}>
-      {blocks && blocks.map((item, i) => (
-        <Block key={i} item={item} />
-      ))}
+      {playing ? (
+        blocks.map((item, i) => (
+          <Block key={i} item={item} />
+        ))
+      ) : (
+        <div className="w-full h-full flex items-center justify-center">
+            <img src="qrcode.png" className="w-128 md:w-256" />
+        </div>
+      )}
     </div>
   )
 }
