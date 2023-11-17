@@ -8,7 +8,7 @@ export const ZHANGFEI = '张飞'
 export const ZHAOYUN = '赵云'
 export const MACHAO = '马超'
 export const HUANGZHONG = '黄忠'
-export const BING = '兵'
+export const BINGZU = '卒'
 
 export function blockBgColor(hero) {
   let bgColor = 'bg-green-400'
@@ -43,15 +43,15 @@ export function blockBgColor(hero) {
 export function layoutHendaolima() {
   const layout = [
     ['caocao', 2, 2, 1, 0, CAOCAO],
-    ['zhaoyun', 1, 2, 0, 0, ZHAOYUN],
-    ['machao', 1, 2, 3, 0, MACHAO],
-    ['huangzhong', 1, 2, 0, 2, HUANGZHONG],
+    ['huangzhong', 1, 2, 0, 0, HUANGZHONG],
+    ['zhaoyun', 1, 2, 3, 0, ZHAOYUN],
+    ['machao', 1, 2, 0, 2, MACHAO],
     ['zhangfei', 1, 2, 3, 2, ZHANGFEI],
     ['guanyu', 2, 1, 1, 2, GUANYU],
-    ['bing1', 1, 1, 1, 3, BING],
-    ['bing2', 1, 1, 2, 3, BING],
-    ['bing3', 1, 1, 0, 4, BING],
-    ['bing4', 1, 1, 3, 4, BING],
+    ['bing1', 1, 1, 0, 4, `${BINGZU}1`],
+    ['bing2', 1, 1, 1, 3, `${BINGZU}2`],
+    ['bing3', 1, 1, 2, 3, `${BINGZU}3`],
+    ['bing4', 1, 1, 3, 4, `${BINGZU}4`],
   ]
 
   return layout.map(([id, w, h, x, y, hero]) => ({
