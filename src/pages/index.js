@@ -59,7 +59,9 @@ export default function Home() {
         <Huarongdao blocks={blocks} playing={playing} move={move} />
       </DndProvider>
 
-      <div className={`w-${2 * Defs.CUBE_SIZE_SM} md:w-${2 * Defs.CUBE_SIZE} text-center text-2xl pt-2 border-x-8 border-gray-200`}>关口</div>
+      <div className={`w-${2 * Defs.CUBE_SIZE_SM} md:w-${2 * Defs.CUBE_SIZE} flex justify-center p-1 bg-orange-400 rounded-b shadow-md shadow-gray-600`}>
+        <span className="text-white text-shadow">关口</span>
+      </div>
     </main>
   )
 }
