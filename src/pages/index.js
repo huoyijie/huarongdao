@@ -1,6 +1,6 @@
 import Huarongdao from "@/components/Huarongdao"
 import { Defs } from "@/lib/defs"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { DndProvider } from "react-dnd"
 import { TouchBackend } from "react-dnd-touch-backend"
 // import { HTML5Backend } from "react-dnd-html5-backend"
@@ -11,6 +11,7 @@ export default function Home() {
   const [blocks, setBlocks] = useState(Defs.layoutHendaolima())
   const [timer, setTimer] = useState(0)
   const [moves, setMoves] = useState(0)
+  const audioRef = useRef()
 
   const newGame = () => {
     setBlocks(Defs.layoutHendaolima())
@@ -19,6 +20,14 @@ export default function Home() {
   }
 
   const move = () => setMoves(moves => moves + 1)
+
+  useEffect(() => {
+    audioRef.current = new Audio('sanguo.mp3')
+    audioRef.current.loop = true
+    audioRef.current.currentTime = 0
+    audioRef.current.volume = 0.5
+    audioRef.current.play()
+  }, [])
 
   useEffect(() => {
     const intervalId = setInterval(() => setTimer(timer => timer + time.SECOND), time.SECOND)
