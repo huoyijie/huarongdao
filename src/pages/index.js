@@ -8,7 +8,7 @@ import { time } from "@/lib/time"
 import Head from "next/head"
 
 export default function Home() {
-  const [blocks, setBlocks] = useState(Defs.layoutHendaolima())
+  const [blocks, setBlocks] = useState()
   const [timer, setTimer] = useState(0)
   const [moves, setMoves] = useState(0)
   const audioRef = useRef()
@@ -17,6 +17,7 @@ export default function Home() {
     setBlocks(Defs.layoutHendaolima())
     setTimer(0)
     setMoves(0)
+    audioRef.current.play()
   }
 
   const move = () => setMoves(moves => moves + 1)
@@ -26,12 +27,13 @@ export default function Home() {
     audioRef.current.loop = true
     audioRef.current.currentTime = 0
     audioRef.current.volume = 0.5
-    audioRef.current.play()
   }, [])
 
   useEffect(() => {
-    const intervalId = setInterval(() => setTimer(timer => timer + time.SECOND), time.SECOND)
-    return () => clearInterval(intervalId)
+    if (blocks) {
+      const intervalId = setInterval(() => setTimer(timer => timer + time.SECOND), time.SECOND)
+      return () => clearInterval(intervalId)
+    }
   }, [blocks])
 
   return (
@@ -46,7 +48,7 @@ export default function Home() {
         <div>第 {moves} 步</div>
         <div>{time.h(timer)}:{time.m(timer)}:{time.s(timer)}</div>
         <div>
-          <button className="border rounded bg-red-400 text-white text-sm p-1 hover:bg-red-600 active:bg-red-400" onClick={newGame}>重新布局</button>
+          <button className="border rounded bg-red-400 text-white text-sm p-1 hover:bg-red-600 active:bg-red-400" onClick={newGame}>{blocks ? '重玩游戏' : '开始游戏'}</button>
         </div>
       </div>
 
