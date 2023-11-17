@@ -2,8 +2,10 @@ import Huarongdao from "@/components/Huarongdao"
 import { Defs } from "@/lib/defs"
 import { useEffect, useState } from "react"
 import { DndProvider } from "react-dnd"
-import { HTML5Backend } from "react-dnd-html5-backend"
+import { TouchBackend } from "react-dnd-touch-backend"
+// import { HTML5Backend } from "react-dnd-html5-backend"
 import { time } from "@/lib/time"
+import Head from "next/head"
 
 export default function Home() {
   const [blocks, setBlocks] = useState(Defs.layoutHendaolima())
@@ -25,6 +27,10 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center p-4">
+      <Head>
+        <title>三国华容道</title>
+      </Head>
+
       <div className="text-4xl p-2">三国华容道</div>
 
       <div className="w-full py-4 flex justify-center items-center gap-4 md:gap-16 md:text-xl text-red-600">
@@ -35,7 +41,7 @@ export default function Home() {
         </div>
       </div>
 
-      <DndProvider backend={HTML5Backend}>
+      <DndProvider backend={TouchBackend} options={{ enableMouseEvents: true }}>
         <Huarongdao blocks={blocks} move={move} />
       </DndProvider>
 
