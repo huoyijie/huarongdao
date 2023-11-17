@@ -43,6 +43,7 @@ export default function Home() {
       <Head>
         <title>三国华容道</title>
         <link rel="icon" type="image/x-icon" href="favicon.ico"></link>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
       </Head>
 
       <div className="text-4xl p-2">三国华容道</div>
