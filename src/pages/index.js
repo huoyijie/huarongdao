@@ -40,6 +40,7 @@ export default function Home() {
     <main className="flex flex-col items-center p-4">
       <Head>
         <title>三国华容道</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico"></link>
       </Head>
 
       <div className="text-4xl p-2">三国华容道</div>
