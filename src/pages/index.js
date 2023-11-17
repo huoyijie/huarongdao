@@ -1,17 +1,17 @@
 import Huarongdao from "@/components/Huarongdao"
-import { layoutHendaolima } from "@/lib/defs"
+import { Defs } from "@/lib/defs"
 import { useEffect, useState } from "react"
 import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
 import { time } from "@/lib/time"
 
 export default function Home() {
-  const [blocks, setBlocks] = useState(layoutHendaolima())
+  const [blocks, setBlocks] = useState(Defs.layoutHendaolima())
   const [timer, setTimer] = useState(0)
   const [moves, setMoves] = useState(0)
 
   const newGame = () => {
-    setBlocks(layoutHendaolima())
+    setBlocks(Defs.layoutHendaolima())
     setTimer(0)
     setMoves(0)
   }
@@ -27,7 +27,7 @@ export default function Home() {
     <main className="flex flex-col items-center p-4">
       <div className="text-4xl p-2">三国华容道</div>
 
-      <div className="w-full py-4 flex justify-center items-center gap-16 text-xl text-red-600">
+      <div className="w-full py-4 flex justify-center items-center gap-4 md:gap-16 md:text-xl text-red-600">
         <div>第 {moves} 步</div>
         <div>{time.h(timer)}:{time.m(timer)}:{time.s(timer)}</div>
         <div>
@@ -39,7 +39,7 @@ export default function Home() {
         <Huarongdao blocks={blocks} move={move} />
       </DndProvider>
 
-      <div className="w-256 text-center text-2xl pt-2 border-x-8 border-gray-200">关口</div>
+      <div className={`w-${2 * Defs.CUBE_SIZE_SM} md:w-${2 * Defs.CUBE_SIZE} text-center text-2xl pt-2 border-x-8 border-gray-200`}>关口</div>
     </main>
   )
 }

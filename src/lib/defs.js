@@ -1,68 +1,26 @@
-export const WIDTH = 4
-export const HEIGHT = 5
-export const CUBE_SIZE = 128
+const CAOCAO = 'caocao'
+const HUANGZHONG = 'huangzhong'
+const ZHAOYUN = 'zhaoyun'
+const MACHAO = 'machao'
+const ZHANGFEI = 'zhangfei'
+const GUANYU = 'guanyu'
+const BINGZU1 = 'bingzu1'
+const BINGZU2 = 'bingzu2'
+const BINGZU3 = 'bingzu3'
+const BINGZU4 = 'bingzu4'
 
-export const CAOCAO = '曹操'
-export const GUANYU = '关羽'
-export const ZHANGFEI = '张飞'
-export const ZHAOYUN = '赵云'
-export const MACHAO = '马超'
-export const HUANGZHONG = '黄忠'
-export const BINGZU = '卒'
-
-export function blockBgColor(hero) {
-  let bgColor = 'bg-green-400'
-  switch (hero) {
-    case CAOCAO:
-      bgColor = 'bg-blue-400'
-      break
-
-    case GUANYU:
-      bgColor = 'bg-red-400'
-      break
-
-    case ZHANGFEI:
-      bgColor = 'bg-gray-600'
-      break
-
-    case HUANGZHONG:
-      bgColor = 'bg-yellow-400'
-      break
-
-    case ZHAOYUN:
-      bgColor = 'bg-orange-400'
-      break
-
-    case MACHAO:
-      bgColor = 'bg-sky-400'
-      break
-  }
-  return bgColor
-}
-
-export function layoutHendaolima() {
-  const layout = [
-    ['caocao', 2, 2, 1, 0, CAOCAO],
-    ['huangzhong', 1, 2, 0, 0, HUANGZHONG],
-    ['zhaoyun', 1, 2, 3, 0, ZHAOYUN],
-    ['machao', 1, 2, 0, 2, MACHAO],
-    ['zhangfei', 1, 2, 3, 2, ZHANGFEI],
-    ['guanyu', 2, 1, 1, 2, GUANYU],
-    ['bing1', 1, 1, 0, 4, `${BINGZU}1`],
-    ['bing2', 1, 1, 1, 3, `${BINGZU}2`],
-    ['bing3', 1, 1, 2, 3, `${BINGZU}3`],
-    ['bing4', 1, 1, 3, 4, `${BINGZU}4`],
-  ]
-
-  return layout.map(([id, w, h, x, y, hero]) => ({
-    id,
-    w,
-    h,
-    x,
-    y,
-    hero,
-  }))
-}
+const hengdaolima = [
+  [CAOCAO, 2, 2, 1, 0, '曹操'],
+  [HUANGZHONG, 1, 2, 0, 0, '黄忠'],
+  [ZHAOYUN, 1, 2, 3, 0, '赵云'],
+  [MACHAO, 1, 2, 0, 2, '马超'],
+  [ZHANGFEI, 1, 2, 3, 2, '张飞'],
+  [GUANYU, 2, 1, 1, 2, '关羽'],
+  [BINGZU1, 1, 1, 0, 4, '卒1'],
+  [BINGZU2, 1, 1, 1, 3, '卒2'],
+  [BINGZU3, 1, 1, 2, 3, '卒3'],
+  [BINGZU4, 1, 1, 3, 4, '卒4'],
+]
 
 function itemCubes({ w, h, x, y }) {
   const cubes = []
@@ -87,11 +45,59 @@ function collised(srcItem, targetItem) {
   return false
 }
 
-export function detectCollision(srcItem, blocks) {
-  for (const targetItem of blocks) {
-    if (srcItem.id != targetItem.id && collised(srcItem, targetItem)) {
-      return true
+export const Defs = {
+  WIDTH: 4,
+  HEIGHT: 5,
+  CUBE_SIZE: 128,
+  CUBE_SIZE_SM: 64,
+
+  blockBgColor(id) {
+    let bgColor = 'bg-green-400'
+    switch (id) {
+      case CAOCAO:
+        bgColor = 'bg-blue-400'
+        break
+
+      case GUANYU:
+        bgColor = 'bg-red-400'
+        break
+
+      case ZHANGFEI:
+        bgColor = 'bg-gray-600'
+        break
+
+      case HUANGZHONG:
+        bgColor = 'bg-yellow-400'
+        break
+
+      case ZHAOYUN:
+        bgColor = 'bg-orange-400'
+        break
+
+      case MACHAO:
+        bgColor = 'bg-sky-400'
+        break
     }
+    return bgColor
+  },
+
+  layoutHendaolima() {
+    return hengdaolima.map(([id, w, h, x, y, hero]) => ({
+      id,
+      w,
+      h,
+      x,
+      y,
+      hero,
+    }))
+  },
+
+  detectCollision(srcItem, blocks) {
+    for (const targetItem of blocks) {
+      if (srcItem.id != targetItem.id && collised(srcItem, targetItem)) {
+        return true
+      }
+    }
+    return false
   }
-  return false
 }
