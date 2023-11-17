@@ -63,7 +63,7 @@ export const Defs = {
         break
 
       case ZHANGFEI:
-        bgColor = 'bg-gray-600'
+        bgColor = 'bg-purple-400'
         break
 
       case HUANGZHONG:

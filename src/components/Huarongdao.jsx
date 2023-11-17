@@ -40,7 +40,7 @@ export default function Huarongdao({ blocks, move }) {
   )
 
   return (
-    <div ref={drop} className={`w-${Defs.WIDTH * Defs.CUBE_SIZE_SM} md:w-${Defs.WIDTH * Defs.CUBE_SIZE} h-${Defs.HEIGHT * Defs.CUBE_SIZE_SM} md:h-${Defs.HEIGHT * Defs.CUBE_SIZE} bg-gray-200 rounded shadow relative`}>
+    <div ref={drop} className={`w-${Defs.WIDTH * Defs.CUBE_SIZE_SM} md:w-${Defs.WIDTH * Defs.CUBE_SIZE} h-${Defs.HEIGHT * Defs.CUBE_SIZE_SM} md:h-${Defs.HEIGHT * Defs.CUBE_SIZE} bg-gray-100 rounded shadow relative shadow-inner-lg shadow-gray-600`}>
       {blocks && blocks.map((item, i) => (
         <Block key={i} item={item} />
       ))}
