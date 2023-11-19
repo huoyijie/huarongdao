@@ -94,7 +94,7 @@ export const Defs = {
 
   detectCollision(srcItem, blocks) {
     // out of bounds
-    if (srcItem.x < 0 || srcItem.x >= this.WIDTH || srcItem.y < 0 || srcItem.y >= this.HEIGHT) {
+    if (srcItem.x < 0 || srcItem.x + srcItem.w > this.WIDTH || srcItem.y < 0 || srcItem.y + srcItem.h > this.HEIGHT) {
       return true
     }
 
