@@ -93,11 +93,18 @@ export const Defs = {
   },
 
   detectCollision(srcItem, blocks) {
+    // out of bounds
+    if (srcItem.x < 0 || srcItem.x >= this.WIDTH || srcItem.y < 0 || srcItem.y >= this.HEIGHT) {
+      return true
+    }
+
+    // collised
     for (const targetItem of blocks) {
       if (srcItem.id != targetItem.id && collised(srcItem, targetItem)) {
         return true
       }
     }
+
     return false
   }
 }
